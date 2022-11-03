@@ -15,14 +15,9 @@ Make sure to install an Ubuntu20.04 distros.
 
 Once you have a working Ubuntu20.04 configured, you can start to install the required packages :
 
-'''bash
-
+```bash
 sudo apt update
-
 sudo apt install gawk wget git diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python python3 \
-
 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev \
-
 pylint3 xterm rsync curl zstd lz4 libssl-dev time file g++-multilib python3-distutils liblz4-tool
-
-'''
+```
