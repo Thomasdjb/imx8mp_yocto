@@ -61,11 +61,29 @@ repo sync
 ```bash
 cd sources/
 git clone https://github.com/SolidRun/meta-solidrun-arm-imx8.git -b zeus-imx8mp
-cd ../
+```
+
+*Add the meta-ros layer :*
+
+```bash
+cd sources/
+git clone https://github.com/ros/meta-ros.git -b zeus
 ```
 
 *Configure build directory to run bitbake command :*
 
 ```bash
 DISTRO=fsl-imx-wayland MACHINE=imx8mpsolidun source imx-setup-release.sh -b build/
+```
+
+## Configure your layers
+
+Open the bblayers.bb file and add those lines
+
+```bash
+BBLAYERS += "${BSPDIR}/sources/meta-solidrun-arm-imx8"
+BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros1-melodic"
+BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros-common"
+BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros1"
+BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros-backports-dunfell"
 ```
