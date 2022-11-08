@@ -73,7 +73,7 @@ git clone https://github.com/ros/meta-ros.git -b zeus
 *Configure build directory to run bitbake command :*
 
 ```bash
-DISTRO=fsl-imx-wayland MACHINE=imx8mpsolidun source imx-setup-release.sh -b build/
+DISTRO=fsl-imx-wayland MACHINE=imx8mpsolidrun source imx-setup-release.sh -b build/
 ```
 
 ## Configure your layers
