@@ -52,7 +52,7 @@ cd imx-yocto-bsp/
 *Clone the nxp-imx repository :*
 
 ```bash
-repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-zeus -m imx-5.4.70-2.3.0.xml (branch and manifest were chosen according to the meta-solidrun-imx compatibility)
+repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-hardknott -m imx-5.10.72-2.2.0.xml (branch and manifest were chosen according to the meta-solidrun-imx compatibility)
 repo sync
 ```
 
@@ -60,14 +60,14 @@ repo sync
 
 ```bash
 cd sources/
-git clone https://github.com/SolidRun/meta-solidrun-arm-imx8.git -b zeus-imx8mp
+git clone https://github.com/SolidRun/meta-solidrun-arm-imx8.git -b hardknott-imx8mp
 ```
 
 *Add the meta-ros layer :*
 
 ```bash
 cd sources/
-git clone https://github.com/ros/meta-ros.git -b zeus
+git clone https://github.com/ros/meta-ros.git -b hardknott
 ```
 
 *Configure build directory to run bitbake command :*
@@ -85,5 +85,21 @@ BBLAYERS += "${BSPDIR}/sources/meta-solidrun-arm-imx8"
 BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros1-melodic"
 BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros-common"
 BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros1"
-BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros-backports-dunfell"
+BBLAYERS += "${BSPDIR}/sources/meta-ros/meta-ros-python2"
+```
+
+Installing ROS on Open Embedded hardknott release does not work at the time. Errors is as follows :
+
+```bash
+Nothing provides "python3-opencv" but python3-opencv required in recipe imx-image-full
+```
+
+## Adding video for linux utils 
+
+v4l provides command-line API to interact with video hardware. Packages are not included in imx-image-full so we need to add them ourselves.
+
+Open conf/local.conf file and add this line :
+
+```bash
+CORE_IMAGE_EXTRA_INSTALL += "v4l-utils"
 ```
